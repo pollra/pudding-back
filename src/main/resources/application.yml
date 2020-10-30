@@ -1,0 +1,15 @@
+#config
+---
+property:
+  name: ${user.dir}/@project.artifactId@-@project.version@.@packaging@
+  api:
+    end-point: /api
+
+# default
+logging:
+  config: classpath:config/logback/logback.xml
+spring:
+  messages:
+    always-use-message-format: false
+    encoding: UTF-8
+    basename: config/message/messages
