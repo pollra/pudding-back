@@ -7,7 +7,7 @@
             <append>true</append>
             <prudent>true</prudent>
             <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-                <fileNamePattern>/tmp/logs/pollra-dev/pudding-back.%d{yyyy-MM-dd}.log</fileNamePattern>
+                <fileNamePattern>/tmp/logs/pollra-dev/local/pudding-back.%d{yyyy-MM-dd}.log</fileNamePattern>
                 <maxHistory>10</maxHistory>
             </rollingPolicy>
             <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
@@ -37,7 +37,7 @@
             <append>true</append>
             <prudent>true</prudent>
             <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-                <fileNamePattern>/data/app_logs/pudding-back.%d{yyyy-MM-dd}.log</fileNamePattern>
+                <fileNamePattern>/tmp/logs/pollra-dev/dev/pudding-back.%d{yyyy-MM-dd}.log</fileNamePattern>
                 <maxHistory>10</maxHistory>
             </rollingPolicy>
             <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
@@ -67,7 +67,7 @@
             <append>true</append>
             <prudent>true</prudent>
             <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-                <fileNamePattern>/data/app_logs/pudding-back.%d{yyyy-MM-dd}.log</fileNamePattern>
+                <fileNamePattern>/tmp/logs/pollra-dev/prod/pudding-back.%d{yyyy-MM-dd}.log</fileNamePattern>
                 <maxHistory>10</maxHistory>
             </rollingPolicy>
             <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
