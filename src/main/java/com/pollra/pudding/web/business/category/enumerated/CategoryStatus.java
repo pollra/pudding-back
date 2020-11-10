@@ -1,4 +1,4 @@
-package com.pollra.pudding.web.category.enumerated;
+package com.pollra.pudding.web.business.category.enumerated;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

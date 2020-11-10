@@ -1,4 +1,4 @@
-package com.pollra.pudding.web.comment.entity;
+package com.pollra.pudding.web.business.comment.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

@@ -1,4 +1,4 @@
-package com.pollra.pudding.web.comment.enumerated;
+package com.pollra.pudding.web.business.comment.enumerated;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

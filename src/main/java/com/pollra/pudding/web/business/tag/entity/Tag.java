@@ -1,18 +1,18 @@
-package com.pollra.pudding.web.category.entity;
+package com.pollra.pudding.web.business.tag.entity;
 
 import com.pollra.pudding.common.base.entity.Sign;
-import com.pollra.pudding.web.category.enumerated.CategoryStatus;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Category extends Sign {
+public class Tag extends Sign {
     @Id @GeneratedValue
     private Long id;
+    private Long poolId;
     private Long aclId;
-    private Long parentId;
+    private Long postId;
     private String name;
-    private CategoryStatus status;
+    private String description;
 }
