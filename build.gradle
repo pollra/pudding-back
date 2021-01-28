@@ -6,7 +6,7 @@ plugins {
 
 group = 'com.pollra'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+sourceCompatibility = '8'
 
 configurations {
     compileOnly {
@@ -30,7 +30,11 @@ dependencies {
 
     // Apache commons
     compile 'org.apache.commons:commons-lang3:3.11'
+    compile 'javax.validation:validation-api:2.0.1.Final'
 
+    compile 'org.mapstruct:mapstruct-jdk8:1.4.1.Final'
+    compile 'org.mapstruct:mapstruct:1.4.1.Final'
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.1.Final'
 }
 
 test {

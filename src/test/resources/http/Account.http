@@ -1,0 +1,9 @@
+POST http://localhost:8010/api/blog/accounts
+Content-Type: application/json
+
+{
+  "email": "pollra32@naver.com",
+  "nickName": "pollra",
+  "password": "12345",
+  "passwordCheck": "12345"
+}
