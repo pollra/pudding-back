@@ -1,11 +1,7 @@
 package com.pollra.pudding.web.sample.form;
 
 import lombok.*;
-import org.springframework.web.bind.annotation.GetMapping;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
@@ -20,6 +16,26 @@ import java.time.LocalDateTime;
 public class SampleMemberForm {
 
     public static class Request {
+
+        @Getter
+        @Setter
+        @Builder
+        @NoArgsConstructor
+        @AllArgsConstructor
+        public static class Find {
+            private Long id;
+        }
+
+        @Getter
+        @Setter
+        @Builder
+        @NoArgsConstructor
+        @AllArgsConstructor
+        public static class FindName {
+            private Long id;
+            private String name;
+            private Integer age;
+        }
 
         @Getter
         @Setter

@@ -18,6 +18,8 @@ public interface SampleMemberMapper {
 
     SampleMember toSampleMember(Request.Add form);
     SampleMember toSampleMember(Long id);
+    SampleMember toSampleMember(Request.Find form);
+    SampleMember toSampleMember(Request.FindName form);
 
     Response.FindOne toFindOne(SampleMember entity);
 }

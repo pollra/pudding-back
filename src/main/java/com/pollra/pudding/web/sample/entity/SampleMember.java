@@ -1,12 +1,11 @@
 package com.pollra.pudding.web.sample.entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 /**
@@ -31,5 +30,6 @@ public class SampleMember {
     private Integer age;
 
     @Column(nullable=false, updatable=false)
+    @CreatedDate
     private LocalDateTime createdDate;
 }
