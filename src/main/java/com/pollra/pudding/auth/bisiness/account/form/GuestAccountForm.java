@@ -1,11 +1,12 @@
 package com.pollra.pudding.auth.bisiness.account.form;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.pollra.pudding.common.engine.encrypte.converter.OneWayEncryptionConverter;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.validator.constraints.Length;
 
-import javax.validation.Valid;
+import javax.persistence.Convert;
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotBlank;
 
@@ -23,7 +24,6 @@ public class GuestAccountForm {
         @Getter
         @Builder
         @ToString
-        @Valid
         @NoArgsConstructor
         @AllArgsConstructor
         public static class Add {
@@ -36,32 +36,34 @@ public class GuestAccountForm {
             private String nickname;
 
             @NotBlank
-            @Length(min=8, max=50)
             private String password;
 
             @JsonProperty("password_check")
-            @Length(min=8, max=50)
             private String passwordCheck;
-
-            @AssertTrue(message="비밀번호가 일치하지 않습니다.")
-            public boolean isValidPassword(){
-                return password.equals(passwordCheck);
-            }
         }
-    }
-
-    public static class Response {
 
         @Setter
         @Getter
         @Builder
+        @ToString
         @NoArgsConstructor
         @AllArgsConstructor
-        public static class AddSuccess {
-            private Long id;
+        public static class Modify {
+            @NotBlank
+            @Length(min=4, max=20)
             private String identity;
+
+            @NotBlank
+            @Length(min=4, max=20)
             private String nickname;
+
+            @NotBlank
+            @Convert(converter= OneWayEncryptionConverter.class)
+            private String password;
         }
+    }
+
+    public static class Response {
 
         @Setter
         @Getter

@@ -1,5 +1,6 @@
 package com.pollra.pudding.auth.bisiness.account.controller;
 
+import com.pollra.pudding.auth.bisiness.account.adapter.GuestAccountAdapter;
 import com.pollra.pudding.auth.bisiness.account.form.GuestAccountForm.Request;
 import com.pollra.pudding.auth.bisiness.account.form.GuestAccountForm.Response;
 import com.pollra.pudding.auth.bisiness.account.service.GuestAccountService;
@@ -22,15 +23,21 @@ import static com.pollra.pudding.auth.bisiness.account.mapper.GuestAccountMapper
 public class GuestAccountController {
 
     private final GuestAccountService guestAccountService;
+    private final GuestAccountAdapter guestAccountAdapter;
 
     @PostMapping
-    public Response.AddSuccess add(@RequestBody @Valid Request.Add add) {
-        log.info("Create request of Account info: "+add);
-        return mapper.toAddSuccess(guestAccountService.add(mapper.toAccount(add)));
+    public Response.FindOne add(@RequestBody @Valid Request.Add add) {
+        log.info(add.toString());
+        return mapper.toFindOne(guestAccountService.add(mapper.toAccount(add)));
     }
 
     @GetMapping("/{id}")
     public Response.FindOne findOne(@PathVariable Long id) {
         return mapper.toFindOne(guestAccountService.findOne(mapper.toAccount(id)));
+    }
+
+    @PatchMapping("/{id}/nickname")
+    public int modify(@PathVariable Long id, @Valid @RequestBody Request.Modify modify) {
+        return guestAccountAdapter.changeNickname(mapper.toAccount(id, modify));
     }
 }

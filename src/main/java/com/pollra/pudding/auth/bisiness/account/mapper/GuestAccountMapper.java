@@ -1,10 +1,9 @@
 package com.pollra.pudding.auth.bisiness.account.mapper;
 
 import com.pollra.pudding.auth.bisiness.account.entity.Account;
-import com.pollra.pudding.auth.bisiness.account.form.GuestAccountForm.*;
+import com.pollra.pudding.auth.bisiness.account.form.GuestAccountForm.Request;
+import com.pollra.pudding.auth.bisiness.account.form.GuestAccountForm.Response;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Mappings;
 import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
 
@@ -19,8 +18,8 @@ public interface GuestAccountMapper {
 
     Account toAccount(Request.Add form);
     Account toAccount(Long id);
+    Account toAccount(Long id, Request.Modify form);
+    Account toAccount(Request.Modify form);
 
-    Response.AddSuccess toAddSuccess(Account entity);
-    Response.FindOne    toFindOne(Account entity);
-
+    Response.FindOne toFindOne(Account entity);
 }

@@ -32,6 +32,7 @@ public class SampleMemberForm {
         @NoArgsConstructor
         @AllArgsConstructor
         public static class FindName {
+            @NotNull
             private Long id;
             private String name;
             private Integer age;
