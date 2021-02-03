@@ -11,4 +11,6 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
     @Modifying(clearAutomatically=true)
     @Query("UPDATE Account a SET a.nickname = ?2 WHERE a.id = ?1")
     int modifiedNickname(Long id, String nickname);
+
+    Account findAccountByIdAndPassword(Long id, String password);
 }
