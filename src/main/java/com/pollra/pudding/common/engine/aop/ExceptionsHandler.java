@@ -24,4 +24,5 @@ public class ExceptionsHandler {
         log.error(e.getMessage());
         return new ResponseEntity<>(e.getMessage(), HttpStatus.NETWORK_AUTHENTICATION_REQUIRED);
     }
+
 }
