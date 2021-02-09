@@ -25,4 +25,11 @@ public class GuestAccountAdapter {
             return guestAccountService.modifiedNickname(entity);
         throw new RuntimeException("닉네임 변경에 실패하였습니다.");
     }
+
+    public int modifiedAccountIdentity(Account entity) {
+        boolean isAccountIdentityMatch = guestAccountAuthenticationService.guestAccountIdentityCheck(entity);
+        if(isAccountIdentityMatch)
+            return guestAccountService.modifiedNickname(entity);
+        throw new RuntimeException("아이디 변경에 실패하였습니다.");
+    }
 }

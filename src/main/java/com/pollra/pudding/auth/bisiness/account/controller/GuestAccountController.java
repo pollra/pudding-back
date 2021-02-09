@@ -27,7 +27,6 @@ public class GuestAccountController {
 
     @PostMapping
     public Response.FindOne add(@RequestBody @Valid Request.Add add) {
-        log.info(add.toString());
         return mapper.toFindOne(guestAccountService.add(mapper.toAccount(add)));
     }
 
@@ -37,7 +36,18 @@ public class GuestAccountController {
     }
 
     @PatchMapping("/{id}/nickname")
-    public int modify(@PathVariable Long id, @Valid @RequestBody Request.Modify modify) {
+    public int modifiedNickname(@PathVariable Long id, @Valid @RequestBody Request.Modify modify) {
         return guestAccountAdapter.changeNickname(mapper.toAccount(id, modify));
+    }
+
+    /**
+     * modified identity
+     * @param id
+     * @param modify
+     * @return
+     */
+    @PatchMapping("/{id}/identity")
+    public int modifiedIdentity(@PathVariable Long id, @Valid @RequestBody Request.Modify modify) {
+        return guestAccountAdapter.modifiedAccountIdentity(mapper.toAccount(id, modify));
     }
 }

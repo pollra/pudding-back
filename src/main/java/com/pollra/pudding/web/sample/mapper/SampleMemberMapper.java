@@ -4,6 +4,7 @@ import com.pollra.pudding.web.sample.entity.SampleMember;
 import com.pollra.pudding.web.sample.form.SampleMemberForm.*;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.Named;
 import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
 

@@ -1,8 +1,7 @@
-package com.pollra.pudding.common.engine.encrypte.converter;
+package com.pollra.pudding.common.engine.encrypte.sha.converter;
 
-import com.pollra.pudding.common.engine.encrypte.algorithm.OneWayEncryptionAlgorithm;
+import com.pollra.pudding.common.engine.encrypte.sha.algorithm.OneWayEncryptionAlgorithm;
 import lombok.SneakyThrows;
-import org.springframework.stereotype.Component;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;

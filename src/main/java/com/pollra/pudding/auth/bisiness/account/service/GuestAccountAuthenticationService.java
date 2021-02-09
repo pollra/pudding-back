@@ -22,4 +22,9 @@ public class GuestAccountAuthenticationService {
         Account account = accountRepository.findAccountByIdAndPassword(entity.getId(), entity.getPassword());
         return account != null;
     }
+
+    public boolean guestAccountIdentityCheck(Account entity) {
+        Account account = accountRepository.findById(entity.getId()).orElse(null);
+        return account != null;
+    }
 }

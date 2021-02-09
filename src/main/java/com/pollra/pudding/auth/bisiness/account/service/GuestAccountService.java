@@ -1,5 +1,7 @@
 package com.pollra.pudding.auth.bisiness.account.service;
 
+import com.pollra.pudding.auth.bisiness.account.controller.GuestAccountController;
+import com.pollra.pudding.auth.bisiness.account.controller.UserAccountController;
 import com.pollra.pudding.auth.bisiness.account.entity.Account;
 import com.pollra.pudding.auth.bisiness.account.repository.AccountRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class GuestAccountService {
 
     private final AccountRepository accountRepository;
+    private final UserAccountController userAccountController;
 
     public Account findOne(Account entity) {
         return accountRepository.findById(entity.getId())
@@ -28,11 +31,16 @@ public class GuestAccountService {
     }
 
     public Account add(Account entity) {
+        log.info("entity.identity: "+entity.getIdentity());
         return accountRepository.save(entity);
     }
 
     @Transactional
     public int modifiedNickname(Account entity) {
         return accountRepository.modifiedNickname(entity.getId(), entity.getNickname());
+    }
+
+    public int modifiedIdentity(Account entity) {
+        return accountRepository.modifiedIdentity(entity.getId(), entity.getIdentity());
     }
 }

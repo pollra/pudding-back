@@ -2,7 +2,7 @@ package com.pollra.pudding.auth.bisiness.account.entity;
 
 import com.pollra.pudding.auth.bisiness.role.entity.Role;
 import com.pollra.pudding.common.base.annotation.Description;
-import com.pollra.pudding.common.engine.encrypte.converter.OneWayEncryptionConverter;
+import com.pollra.pudding.common.engine.encrypte.sha.converter.OneWayEncryptionConverter;
 import lombok.*;
 
 import javax.persistence.*;

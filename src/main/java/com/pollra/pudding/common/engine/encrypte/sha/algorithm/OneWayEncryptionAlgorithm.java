@@ -1,4 +1,4 @@
-package com.pollra.pudding.common.engine.encrypte.algorithm;
+package com.pollra.pudding.common.engine.encrypte.sha.algorithm;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -12,7 +12,6 @@ public class OneWayEncryptionAlgorithm {
     private static final String SALT = "sigenan";
 
     public static final OneWayEncryptionAlgorithm INSTANCE = new OneWayEncryptionAlgorithm();
-
     private OneWayEncryptionAlgorithm() { if(INSTANCE != null) throw new AssertionError(); }
     public static OneWayEncryptionAlgorithm getInstance() { return INSTANCE; }
 

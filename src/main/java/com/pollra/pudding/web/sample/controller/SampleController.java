@@ -1,13 +1,11 @@
 package com.pollra.pudding.web.sample.controller;
 
 import com.pollra.pudding.common.engine.exception.ExceptionCode;
-import com.pollra.pudding.web.sample.entity.SampleMember;
 import com.pollra.pudding.web.sample.exception.SampleException;
-import com.pollra.pudding.web.sample.form.SampleMemberForm;
-import com.pollra.pudding.web.sample.form.SampleMemberForm.*;
+import com.pollra.pudding.web.sample.form.SampleMemberForm.Request;
+import com.pollra.pudding.web.sample.form.SampleMemberForm.Response;
 import com.pollra.pudding.web.sample.service.SampleMemberService;
 import lombok.RequiredArgsConstructor;
-import org.aspectj.weaver.ast.Test;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
