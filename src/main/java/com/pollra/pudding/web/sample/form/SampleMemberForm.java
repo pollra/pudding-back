@@ -41,6 +41,7 @@ public class SampleMemberForm {
         @Getter
         @Setter
         @Builder
+        @ToString
         @NoArgsConstructor
         @AllArgsConstructor
         public static class Add {

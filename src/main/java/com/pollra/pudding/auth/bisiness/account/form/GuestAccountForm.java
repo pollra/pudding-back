@@ -1,12 +1,10 @@
 package com.pollra.pudding.auth.bisiness.account.form;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.pollra.pudding.common.engine.encrypte.sha.converter.OneWayEncryptionConverter;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.validator.constraints.Length;
 
-import javax.persistence.Convert;
 import javax.validation.constraints.NotBlank;
 
 /**

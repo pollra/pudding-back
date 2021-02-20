@@ -1,4 +1,4 @@
-package com.pollra.pudding.common.engine.encrypte.sha.algorithm;
+package com.pollra.pudding.common.engine.encrypt.sha.algorithm;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -17,7 +17,7 @@ public class OneWayEncryptionAlgorithm {
 
     public String hashing(String password) throws NoSuchAlgorithmException {
         MessageDigest digest = MessageDigest.getInstance("SHA-256");
-        for (int i = 0; i < 37; i++) {
+        for (int i = 0; i < 7_021; i++) {
             String temp = password+SALT;
             digest.update(temp.getBytes());
             password = byteToString(digest.digest());
