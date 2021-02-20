@@ -35,6 +35,7 @@ dependencies {
 
     // Apache commons
     compile 'org.apache.commons:commons-lang3:3.11'
+    implementation group: 'org.apache.commons', name: 'commons-text', version: '1.9'
 
     // MapStruct
     /*compile 'org.mapstruct:mapstruct-jdk8:1.4.1.Final'
@@ -47,7 +48,6 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
 
     // jasypt
-    // https://mvnrepository.com/artifact/com.github.ulisesbocchio/jasypt-spring-boot-starter
     compile group: 'com.github.ulisesbocchio', name: 'jasypt-spring-boot-starter', version: '3.0.0'
 
 }
