@@ -42,7 +42,6 @@ public class SampleController {
 
     @GetMapping("/members/{id}/name/{name}") // 이렇게 하면 안됨
     public Boolean findName(@ModelAttribute Request.FindName find) {
-//    public Boolean findName(@PathVariable Integer id, @PathVariable String name, @RequestBody Integer age) {
         return mapper.toFindOne(sampleMemberService.find(mapper.toSampleMember(find))).getName().equals(find.getName());
     }
 }
