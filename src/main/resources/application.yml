@@ -4,7 +4,6 @@ property:
   name: ${user.dir}/@project.artifactId@-@project.version@.@packaging@
   api:
     end-point: /api
-
 # default
 logging:
   config: classpath:config/logback/logback.xml
@@ -27,7 +26,7 @@ spring:
       path: /h2
   datasource:
     driver-class-name: org.h2.Driver
-    url: jdbc:h2:tcp://localhost/~/pudding
+    url: ENC(CasVWKjJ/V5YPQxxhbEnZ14ah5PW7Mmy8sa8L+p5pFbt/DkgQB42Z9fxwp383HH1TXyLEEpJfh2wj6r51GK3BwFSCM3/mZ5Q8XJmSWB/znY=)
     username: sa
     password:
 # dev
