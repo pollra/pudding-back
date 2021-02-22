@@ -49,13 +49,6 @@ public class JsonWebTokenAlgorithm {
                 .compact(); // 토큰 생성
     }
 
-    /**
-     * 토큰 검증
-     * @param jwt
-     * @return
-     * @throws UnsupportedEncodingException : 지원되지 않는 인코딩
-     * @throws ExpiredJwtException          : 만료된 토큰
-     */
     @SneakyThrows
     public Map<String, Object> verifyJWT(String jwt) {
         Map<String, Object> claimMap = null;
