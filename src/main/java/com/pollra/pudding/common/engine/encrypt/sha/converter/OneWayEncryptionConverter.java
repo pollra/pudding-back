@@ -1,6 +1,6 @@
-package com.pollra.pudding.common.engine.encrypte.sha.converter;
+package com.pollra.pudding.common.engine.encrypt.sha.converter;
 
-import com.pollra.pudding.common.engine.encrypte.sha.algorithm.OneWayEncryptionAlgorithm;
+import com.pollra.pudding.common.engine.encrypt.sha.algorithm.OneWayEncryptionAlgorithm;
 import lombok.SneakyThrows;
 
 import javax.persistence.AttributeConverter;
