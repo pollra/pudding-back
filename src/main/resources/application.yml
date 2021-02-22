@@ -4,6 +4,8 @@ property:
   name: ${user.dir}/@project.artifactId@-@project.version@.@packaging@
   api:
     end-point: /api
+  jwt:
+    key: ENC(OSpYSdJtNoXeebM36n2vI11cBS9ZKO8cG56ndGc0YvolyW6ECf11MuwETS4nbZ2R5emSBn6gbI0aItGCiTfusw==)
 # default
 logging:
   config: classpath:config/logback/logback.xml

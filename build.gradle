@@ -47,7 +47,8 @@ dependencies {
     // jasypt
     compile group: 'com.github.ulisesbocchio', name: 'jasypt-spring-boot-starter', version: '3.0.0'
 
-
+    // Jwt
+    implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
 }
 
 test {
