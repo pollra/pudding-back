@@ -17,4 +17,5 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
     int modifiedIdentity(Long id, String identity);
 
     Account findAccountByIdAndPassword(Long id, String password);
+    Account findAccountByNickname(String nickname);
 }

@@ -20,7 +20,6 @@ import org.springframework.transaction.annotation.Transactional;
 public class GuestAccountService {
 
     private final AccountRepository accountRepository;
-    private final UserAccountController userAccountController;
 
     public Account findOne(Account entity) {
         return accountRepository.findById(entity.getId())

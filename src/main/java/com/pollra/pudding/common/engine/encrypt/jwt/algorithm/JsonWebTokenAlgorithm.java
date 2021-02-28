@@ -1,6 +1,7 @@
 package com.pollra.pudding.common.engine.encrypt.jwt.algorithm;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.pollra.pudding.common.engine.filter.jwt.domain.Credential;
 import com.pollra.pudding.common.engine.helper.property.PropertyHelper;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -27,7 +28,7 @@ public class JsonWebTokenAlgorithm {
     private final ObjectMapper objectMapper;
 
     @SneakyThrows
-    public String createToken(Object data){
+    public String createToken(Credential data){
 
         Map<String, Object> headers = new HashMap<>();
         headers.put("type"      , "JWT"     );
@@ -57,9 +58,12 @@ public class JsonWebTokenAlgorithm {
                 .parseClaimsJws(jwt) // 파싱 및 검증, 실패 시 에러
                 .getBody();
 
+        String json = objectMapper.writeValueAsString(claims);
+        Map<String, Object> result = objectMapper.readValue(json, HashMap.class);
+
         claimMap = claims;
-        //Date expiration = claims.get("exp", Date.class);
-        //String data = claims.get("data", String.class);
+//        Date expiration = claims.get("exp", Date.class);
+//        String data = claims.get("data", String.class);
         return claimMap;
     }
 }

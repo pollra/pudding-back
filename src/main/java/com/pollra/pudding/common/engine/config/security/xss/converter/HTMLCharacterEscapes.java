@@ -41,10 +41,10 @@ public class HTMLCharacterEscapes extends CharacterEscapes {
         escapeSequence.put("'", "&#39;");
         // 2. XSS 방지 처리 특수 문자 인코딩 값 지정
         translator = new AggregateTranslator(
-                new LookupTranslator(EntityArrays.BASIC_ESCAPE          ), // <, >, &, " 는 여기에 포함됨
-                new LookupTranslator(EntityArrays.ISO8859_1_ESCAPE      ), // 발음기호 변경
-                new LookupTranslator(EntityArrays.HTML40_EXTENDED_ESCAPE), // 추가 문자 이스케이프
-                new LookupTranslator(escapeSequence)
+                 new LookupTranslator(EntityArrays.BASIC_ESCAPE          ) // <, >, &, " 는 여기에 포함됨
+                ,new LookupTranslator(EntityArrays.ISO8859_1_ESCAPE      ) // 발음기호 변경
+                ,new LookupTranslator(EntityArrays.HTML40_EXTENDED_ESCAPE) // 추가 문자 이스케이프
+                ,new LookupTranslator(escapeSequence)
         );
     }
 

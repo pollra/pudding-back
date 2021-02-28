@@ -8,9 +8,9 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class ExceptionHelper {
     public static ExceptionForm getException(ExceptionCode exceptionCode) {
-        String exceptionMessage = MessageHelper.getMessage(exceptionCode);
-        ExceptionForm exceptionForm = ExceptionForm.builder()
-                .code(exceptionCode)
+        String        exceptionMessage = MessageHelper.getMessage(exceptionCode);
+        ExceptionForm exceptionForm    = ExceptionForm.builder()
+                .code   (exceptionCode)
                 .message(exceptionMessage)
                 .build();
 
@@ -19,10 +19,10 @@ public class ExceptionHelper {
     }
 
     public static ExceptionForm getException(String code) {
-        ExceptionCode exceptionCode = ExceptionCode.valueOf(code);
-        String exceptionMessage = MessageHelper.getMessage(exceptionCode);
-        ExceptionForm exceptionForm = ExceptionForm.builder()
-                .code(exceptionCode)
+        ExceptionCode exceptionCode    = ExceptionCode.valueOf(code);
+        String        exceptionMessage = MessageHelper.getMessage(exceptionCode);
+        ExceptionForm exceptionForm    = ExceptionForm.builder()
+                .code   (exceptionCode)
                 .message(exceptionMessage)
                 .build();
 

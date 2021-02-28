@@ -1,6 +1,7 @@
 package com.pollra.pudding.web.sample.form;
 
 import lombok.*;
+import org.springframework.core.annotation.AliasFor;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -52,6 +53,18 @@ public class SampleMemberForm {
             @Min(0)
             @Max(200)
             private Integer age;
+
+            private Account account;
+
+            @Data
+            @Builder
+            @ToString
+            @NoArgsConstructor
+            @AllArgsConstructor
+            public static class Account {
+                private String name;
+                private String role;
+            }
         }
     }
 
