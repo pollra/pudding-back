@@ -14,6 +14,9 @@ spring:
     always-use-message-format: false
     encoding: UTF-8
     basename: config/message/messages
+  datasource:
+    schema: classpath:/config/sql/role.sql
+    initialization-mode: always
 
 # default(local)
 ---
