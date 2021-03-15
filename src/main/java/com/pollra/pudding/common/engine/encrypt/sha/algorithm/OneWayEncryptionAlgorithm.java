@@ -1,5 +1,7 @@
 package com.pollra.pudding.common.engine.encrypt.sha.algorithm;
 
+import com.pollra.pudding.common.engine.helper.property.PropertyHelper;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -9,16 +11,18 @@ import java.security.NoSuchAlgorithmException;
  * @since 2021.02.01
  **********************************************************************************************************************/
 public class OneWayEncryptionAlgorithm {
-    private static final String SALT = "sigenan";
-
     public static final OneWayEncryptionAlgorithm INSTANCE = new OneWayEncryptionAlgorithm();
     private OneWayEncryptionAlgorithm() { if(INSTANCE != null) throw new AssertionError(); }
     public static OneWayEncryptionAlgorithm getInstance() { return INSTANCE; }
 
     public String hashing(String password) throws NoSuchAlgorithmException {
-        MessageDigest digest = MessageDigest.getInstance("SHA-256");
-        for (int i = 0; i < 7_021; i++) {
-            String temp = password+SALT;
+        final String algorithm = PropertyHelper.getSpring().getEncrypt().getAlgorithm();
+        final String salt = PropertyHelper.getSpring().getEncrypt().getSalt();
+        final int hashing = Integer.parseInt(PropertyHelper.getSpring().getEncrypt().getHashing());
+
+        MessageDigest digest = MessageDigest.getInstance(algorithm);
+        for (int i = 0; i < hashing; i++) {
+            String temp = password+salt;
             digest.update(temp.getBytes());
             password = byteToString(digest.digest());
         }

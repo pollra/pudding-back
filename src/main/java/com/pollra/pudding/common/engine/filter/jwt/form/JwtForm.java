@@ -1,5 +1,6 @@
 package com.pollra.pudding.common.engine.filter.jwt.form;
 
+import com.pollra.pudding.auth.bisiness.account.entity.Account;
 import com.pollra.pudding.common.engine.filter.jwt.domain.Credential;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -32,6 +33,15 @@ public class JwtForm {
         @AllArgsConstructor
         public static class Payloads {
             private Credential credential;
+
+            @Data
+            @Builder
+            @NoArgsConstructor
+            @AllArgsConstructor
+            public static class Credential {
+                private String role;
+                private String nickname;
+            }
         }
     }
 }

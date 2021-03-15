@@ -1,9 +1,10 @@
 package com.pollra.pudding.common.engine.filter.jwt;
 
 import com.pollra.pudding.auth.bisiness.account.adapter.CredentialAdapter;
+import com.pollra.pudding.auth.bisiness.account.entity.Account;
 import com.pollra.pudding.common.engine.encrypt.jwt.algorithm.JsonWebTokenAlgorithm;
-import com.pollra.pudding.common.engine.filter.jwt.domain.Credential;
 import com.pollra.pudding.common.engine.filter.jwt.wrapper.HttpRequestWithModifiableParameters;
+import com.pollra.pudding.common.engine.helper.nickname.NicknameHelper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -41,7 +42,7 @@ public class JwtAuthenticationFilter extends GenericFilter {
         String paramName = "";
         String paramVal = "";
 
-        boolean whetherCookieExists = false;
+        Account signInAccount = null;
 
         while (parameterNames.hasMoreElements()) {
             paramName = (String) parameterNames.nextElement();
@@ -53,18 +54,28 @@ public class JwtAuthenticationFilter extends GenericFilter {
                 log.debug("SecuValidFilter => paramName: " + paramName + ", paramVal: " + paramVal);
                 // 필터링 작업
                 Cookie[] cookies = ((HttpServletRequest) request).getCookies();
-                if(cookies == null) {
-                    whetherCookieExists = false;
+                Cookie accessCookie = null;
+                if(cookies != null) {
+                    for (Cookie cookie : cookies) {
+                        if (!cookie.getName().equals(JWT_NAME)) continue;
+                        accessCookie = cookie;
+                    }
+                }
+
+                if(accessCookie == null) {
                     log.info("[cookie] 쿠키가 존재하지 않습니다. 응답 시 쿠키를 생성합니다.");
                     param.setParameter("credential.name", "GUEST");
                     param.setParameter("credential.role", "GUEST");
-                    credentialAdapter.authentication(Credential.builder()
-                            .name("GUEST")
-                            .role()
-                            .build());
+
+                    signInAccount = Account.builder()
+                            .nickname(NicknameHelper.createNickname())
+                            .identity(request.getRemoteAddr())
+                            .password("guest")
+                            .build();
+
+                    credentialAdapter.authentication(signInAccount);
 
                 } else for (Cookie cookie : cookies) {
-                    whetherCookieExists = true;
                     if( ! cookie.getName().equals(JWT_NAME)) continue;
                     Map<String, Object> stringObjectMap = jsonWebTokenAlgorithm.verifyJWT(cookie.getValue());
                     param.setParameter("credential.name", StringUtils.defaultIfBlank(stringObjectMap.get("user").toString(), ""));
@@ -92,12 +103,14 @@ public class JwtAuthenticationFilter extends GenericFilter {
 
         HttpServletResponse httpServletResponse = new HttpServletResponseWrapper((HttpServletResponse) response);
 
-        if(whetherCookieExists) {
-            Credential credential = Credential.builder()
-                    .name()
-                    .role()
-                    .build();
-            httpServletResponse.addCookie(new Cookie(JWT_NAME, jsonWebTokenAlgorithm.createToken(credential)));
-        }
+        // TODO: 위에서 등록한 권한으로 인증 쿠키 생성
+//        if(null != signInAccount) {
+//            Credential credential = Credential.builder()
+//                    .role(signInAccount.getRole().toString())
+//                    .name(signInAccount.getNickname())
+//                    .build();
+//            Cookie cookie = new Cookie(JWT_NAME, jsonWebTokenAlgorithm.createToken(credential));
+//            httpServletResponse.addCookie(cookie);
+//        }
     }
 }

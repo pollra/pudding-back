@@ -3,6 +3,8 @@ package com.pollra.pudding.common.engine.helper.nickname;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.RandomUtils;
 
+import javax.naming.Context;
+
 /**
  * @author pollra
  * @description NicknameHelper
@@ -27,8 +29,8 @@ public class NicknameHelper {
     };
 
     public static String createNickname() {
-        int prefix = RandomUtils.nextInt(0, 29);
-        int suffix = RandomUtils.nextInt(0, 29);
-        return PREFIX_NAMES[prefix] + SUFFIX_NAMES[suffix];
+        int prefixIndex = RandomUtils.nextInt(0, PREFIX_NAMES.length);
+        int suffixIndex = RandomUtils.nextInt(0, SUFFIX_NAMES.length);
+        return PREFIX_NAMES[prefixIndex] + " "+ SUFFIX_NAMES[suffixIndex];
     }
 }

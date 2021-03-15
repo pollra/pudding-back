@@ -1,6 +1,7 @@
 package com.pollra.pudding.common.engine.helper.property;
 
 import com.pollra.pudding.common.engine.config.properties.PropertyConfiguration;
+import com.pollra.pudding.common.engine.config.properties.SpringConfiguration;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -16,8 +17,12 @@ public class PropertyHelper {
     @Getter
     private static PropertyConfiguration property;
 
+    @Getter
+    private static SpringConfiguration spring;
+
     @Autowired
-    public PropertyHelper(PropertyConfiguration propertyConfiguration) {
+    public PropertyHelper(PropertyConfiguration propertyConfiguration, SpringConfiguration springConfiguration) {
         PropertyHelper.property = propertyConfiguration;
+        PropertyHelper.spring   = springConfiguration;
     }
 }

@@ -9,10 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("${property.api.end-point}/blogs/user")
+@Deprecated
 public class UserAccountController {
 
-    @GetMapping("beantest/{text}")
-    public String hello(@PathVariable String text) {
-        return "Hello, "+text;
-    }
 }

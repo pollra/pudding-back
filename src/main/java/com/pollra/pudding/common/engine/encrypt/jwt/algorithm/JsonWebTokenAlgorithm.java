@@ -1,17 +1,16 @@
 package com.pollra.pudding.common.engine.encrypt.jwt.algorithm;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.pollra.pudding.auth.bisiness.account.entity.Account;
 import com.pollra.pudding.common.engine.filter.jwt.domain.Credential;
 import com.pollra.pudding.common.engine.helper.property.PropertyHelper;
 import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import org.springframework.stereotype.Component;
 
-import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;

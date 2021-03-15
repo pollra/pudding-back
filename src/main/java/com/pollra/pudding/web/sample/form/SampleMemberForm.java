@@ -24,6 +24,7 @@ public class SampleMemberForm {
         @NoArgsConstructor
         @AllArgsConstructor
         public static class Find {
+            @NotNull
             private Long id;
         }
 
@@ -54,14 +55,14 @@ public class SampleMemberForm {
             @Max(200)
             private Integer age;
 
-            private Account account;
+            private Credential credential;
 
             @Data
             @Builder
             @ToString
             @NoArgsConstructor
             @AllArgsConstructor
-            public static class Account {
+            public static class Credential {
                 private String name;
                 private String role;
             }
