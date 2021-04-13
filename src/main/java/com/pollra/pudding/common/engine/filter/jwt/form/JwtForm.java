@@ -1,7 +1,5 @@
 package com.pollra.pudding.common.engine.filter.jwt.form;
 
-import com.pollra.pudding.auth.bisiness.account.entity.Account;
-import com.pollra.pudding.common.engine.filter.jwt.domain.Credential;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

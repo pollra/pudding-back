@@ -47,4 +47,9 @@ public class ExceptionsHandler {
         return new ResponseEntity<>(ExceptionHelper.getException(ExceptionCode.E00020001), HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(RuntimeException.class)
+    public ResponseEntity<?> handleSignatureException(RuntimeException e) {
+        log.error(e.getMessage());
+        return new ResponseEntity<>(ExceptionHelper.getException(ExceptionCode.SAMPLE_01), HttpStatus.BAD_REQUEST);
+    }
 }

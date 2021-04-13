@@ -1,7 +1,6 @@
 package com.pollra.pudding.common.engine.encrypt.jwt.algorithm;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.pollra.pudding.auth.bisiness.account.entity.Account;
 import com.pollra.pudding.common.engine.filter.jwt.domain.Credential;
 import com.pollra.pudding.common.engine.helper.property.PropertyHelper;
 import io.jsonwebtoken.Claims;
