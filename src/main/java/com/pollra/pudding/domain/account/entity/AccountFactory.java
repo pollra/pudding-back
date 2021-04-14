@@ -1,5 +1,6 @@
 package com.pollra.pudding.domain.account.entity;
 
+import com.pollra.pudding.common.engine.constant.Constant;
 import com.pollra.pudding.domain.role.entity.RoleFactory;
 
 /**
@@ -8,7 +9,7 @@ import com.pollra.pudding.domain.role.entity.RoleFactory;
  * @description AccountFactory
  **********************************************************************************************************************/
 public class AccountFactory {
-	public static Account createNomalAccount(final String identity, final String nickname, String password) {
-		return new Account(identity, nickname, password, RoleFactory.createGuestRole());
+	public static Account createNormalAccount(final String identity, final String nickname, String password) {
+		return new Account(identity, nickname, password, RoleFactory.createGuestRole(Constant.String.EMPTY));
 	}
 }

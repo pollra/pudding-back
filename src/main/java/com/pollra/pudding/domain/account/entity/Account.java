@@ -8,6 +8,7 @@ import lombok.*;
 import javax.persistence.*;
 
 @Entity
+@Getter
 @EntityListeners(value=OneWayEncryptionConverter.class)
 @NoArgsConstructor(access=AccessLevel.PROTECTED)
 @Table(name="ACCOUNT")

@@ -1,5 +1,7 @@
 package com.pollra.pudding.domain.acl.entity;
 
+import com.pollra.pudding.domain.acl.enumerated.ActionCode;
+import com.pollra.pudding.domain.acl.enumerated.ResourceCode;
 import com.pollra.pudding.domain.role.entity.Role;
 
 import javax.persistence.*;
@@ -15,7 +17,13 @@ public class Acl {
     @JoinColumn(name = "ROLE_ID")
     private Role role;
 
-    private String condition;
-    private String action;
+    @Enumerated(EnumType.STRING)
+    private ResourceCode resource;
+    
+    private Long resourceId;
+    
+    @Enumerated(EnumType.STRING)
+    private ActionCode action;
+    
     private String expiration;
 }
