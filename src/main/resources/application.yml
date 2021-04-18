@@ -10,17 +10,22 @@ property:
 logging:
   config: classpath:config/logback/logback.xml
 spring:
-  messages:
-    always-use-message-format: false
-    encoding: UTF-8
-    basename: config/message/messages
-  datasource:
-    schema: classpath:/config/sql/role.sql
-    initialization-mode: always
-  encrypt:
-    salt: ENC(qE50u7USWEtFeYaryPA7eA2L6vF/VKdcV3lxu1mkiz3WlrZ33tLZjEYZSTT7LOok)
-    hashing: ENC(haiJZC4qfPHzPxWZYHbfjNyPkhEYJxLiTlxFdWRsvWMFnBwlN3IC99ycTTCXOTWC)
-    algorithm: ENC(t++E92z0njmN4bbMIVdOSCrIREKNGfEy0NEuTDsmmA/g+5F933jkeyL59gk4vaeZ)
+    datasource:
+        data: classpath:config/sql/role.sql
+    jpa:
+        hibernate   :
+            ddl-auto: create
+    batch:
+        initialize-schema: always
+
+    messages:
+        always-use-message-format: false
+        encoding: UTF-8
+        basename: config/message/messages
+    encrypt:
+        salt: ENC(qE50u7USWEtFeYaryPA7eA2L6vF/VKdcV3lxu1mkiz3WlrZ33tLZjEYZSTT7LOok)
+        hashing: ENC(haiJZC4qfPHzPxWZYHbfjNyPkhEYJxLiTlxFdWRsvWMFnBwlN3IC99ycTTCXOTWC)
+        algorithm: ENC(t++E92z0njmN4bbMIVdOSCrIREKNGfEy0NEuTDsmmA/g+5F933jkeyL59gk4vaeZ)
 
 # default(local)
 ---

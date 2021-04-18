@@ -31,25 +31,21 @@ public class ExceptionsHandler {
 
     @ExceptionHandler(UnsupportedEncodingException.class)
     public ResponseEntity<?> handleUnsupportedEncodingException(UnsupportedEncodingException e) {
-        log.error(e.getMessage());
         return new ResponseEntity<>(ExceptionHelper.getException(ExceptionCode.E00020003), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @ExceptionHandler(ExpiredJwtException.class)
     public ResponseEntity<?> handleExpiredJwtException(ExpiredJwtException e) {
-        log.error(e.getMessage());
         return new ResponseEntity<>(ExceptionHelper.getException(ExceptionCode.E00020002), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(SignatureException.class)
     public ResponseEntity<?> handleSignatureException(SignatureException e) {
-        log.error(e.getMessage());
         return new ResponseEntity<>(ExceptionHelper.getException(ExceptionCode.E00020001), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(RuntimeException.class)
     public ResponseEntity<?> handleSignatureException(RuntimeException e) {
-        log.error(e.getMessage());
-        return new ResponseEntity<>(ExceptionHelper.getException(ExceptionCode.SAMPLE_01), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(ExceptionHelper.getException(e.getMessage()), HttpStatus.BAD_REQUEST);
     }
 }

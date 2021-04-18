@@ -1,14 +1,15 @@
 package com.pollra.pudding.domain.role.entity;
 
+import com.pollra.pudding.common.base.exceptions.IllegalArgumentException;
+import com.pollra.pudding.common.engine.exception.ExceptionCode;
 import com.pollra.pudding.domain.acl.enumerated.AuthorityCode;
 import lombok.AccessLevel;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.http.HttpStatus;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.*;
 
 /**
  * @since       2021.04.14
@@ -16,24 +17,26 @@ import javax.persistence.Enumerated;
  * @description RoleName
  **********************************************************************************************************************/
 @Embeddable
+@Getter
 @NoArgsConstructor(access=AccessLevel.PROTECTED)
 public class RoleName {
 	
+	@Column(unique=true)
 	private String name;
 	
-	@Column(nullable=true)
-	@Enumerated(EnumType.STRING)
+	@Transient
 	private AuthorityCode authority;
 	
 	protected RoleName(final String name, AuthorityCode authority) {
-		if(lengthBetweenIs(name, 2, 20) ) {
-			throw new IllegalArgumentException("권한 명은 2자 이상 10 자 미만이어야 합니다");
+		if(StringUtils.isNotBlank(name) && lengthBetweenIs(name, 2, 20) ) {
+			throw new IllegalArgumentException(ExceptionCode.E00050001, HttpStatus.BAD_REQUEST);
 		}
-		this.name = name.toUpperCase();
+		this.name = name.toUpperCase()+ authority;
 		this.authority = authority;
 	}
 	
 	protected RoleName(AuthorityCode authority) {
+		this.name = authority.name();
 		this.authority = authority;
 	}
 	

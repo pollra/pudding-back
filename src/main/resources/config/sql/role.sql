@@ -1,1 +1,5 @@
-// 초기화 할 데이터 입력
+INSERT INTO ROLE (ROLE_ID, NAME) VALUES (1, 'GUEST' )
+, (2, 'VISITOR' )
+, (3, 'MEMBER' 	)
+, (4, 'MASTER' 	)
+, (5, 'ADMIN' 	) ;

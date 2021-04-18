@@ -1,11 +1,15 @@
 package com.pollra.pudding.domain.account.entity;
 
+import com.pollra.pudding.common.base.exceptions.IllegalArgumentException;
+import com.pollra.pudding.common.engine.exception.ExceptionCode;
 import com.pollra.pudding.domain.role.entity.Role;
 import com.pollra.pudding.common.base.annotation.Description;
 import com.pollra.pudding.common.engine.encrypt.sha.converter.OneWayEncryptionConverter;
 import lombok.*;
+import org.springframework.http.HttpStatus;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Getter
@@ -32,19 +36,29 @@ public class Account {
     @Convert(converter=OneWayEncryptionConverter.class)
     private String password;
  
-	protected Account(final String identity, final String nickname, final String password, final Role role) {
-		if(identity.length() < 4 || identity.length() > 20) {
-			throw new IllegalArgumentException("identity 는 4자 이상, 20자 이하로 작성 되어야 합니다");
+	protected Account(final String identity, final String nickname, final String password, final String passwordCheck, final Role role) {
+		if(betweenIs(identity, 4, 20)) {
+			throw new IllegalArgumentException(ExceptionCode.E00040001, HttpStatus.BAD_REQUEST);
 		}
-		if(nickname.length() < 2 || nickname.length() > 12) {
-			throw new IllegalArgumentException("nickname 은 2자 이상, 12자 이하로 작성 되어야 합니다");
+		if(betweenIs(nickname, 2, 12)) {
+			throw new IllegalArgumentException(ExceptionCode.E00040002, HttpStatus.BAD_REQUEST);
 		}
-		if(password.length() < 8 || password.length() > 30) {
-			throw new IllegalArgumentException("password 은 8자 이상, 30자 이하로 작성 되어야 합니다");
+		if(betweenIs(password, 8, 30)) {
+			throw new IllegalArgumentException(ExceptionCode.E00040003, HttpStatus.BAD_REQUEST);
+		}
+		if(Objects.isNull(role)) {
+			throw new IllegalArgumentException(ExceptionCode.E00040004, HttpStatus.BAD_REQUEST);
+		}
+		if( ! password.equals(passwordCheck)) {
+			throw new IllegalArgumentException(ExceptionCode.E00040005, HttpStatus.BAD_REQUEST);
 		}
 		this.identity = identity;
 		this.nickname = nickname;
 		this.password = password;
 		this.role 	  = role;
+	}
+	
+	private boolean betweenIs(String target, int min, int max) {
+		return target.length() < min || target.length() > max;
 	}
 }

@@ -19,6 +19,4 @@ public enum AuthorityCode {
 	ADMIN	("관리자");
     
     private String description;
-    
-    
 }
