@@ -44,10 +44,10 @@ public class Account {
 			throw new IllegalArgumentException(ExceptionCode.E00040002, HttpStatus.BAD_REQUEST);
 		}
 		if(betweenIs(password, 8, 30)) {
-			throw new IllegalArgumentException(ExceptionCode.E00040003, HttpStatus.BAD_REQUEST);
+			throw new IllegalArgumentException(ExceptionCode.E00040003, HttpStatus.BAD_REQUEST); // 개선 (세부사항이 도메인에 침투함)
 		}
 		if(Objects.isNull(role)) {
-			throw new IllegalArgumentException(ExceptionCode.E00040004, HttpStatus.BAD_REQUEST);
+			throw new IllegalArgumentException(ExceptionCode.E00040004, HttpStatus.BAD_REQUEST); // 사람이 읽을 수 있게 만드는게
 		}
 		if( ! password.equals(passwordCheck)) {
 			throw new IllegalArgumentException(ExceptionCode.E00040005, HttpStatus.BAD_REQUEST);

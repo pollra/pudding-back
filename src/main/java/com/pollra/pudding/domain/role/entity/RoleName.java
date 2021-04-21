@@ -24,20 +24,15 @@ public class RoleName {
 	@Column(unique=true)
 	private String name;
 	
-	@Transient
-	private AuthorityCode authority;
-	
 	protected RoleName(final String name, AuthorityCode authority) {
 		if(StringUtils.isNotBlank(name) && lengthBetweenIs(name, 2, 20) ) {
 			throw new IllegalArgumentException(ExceptionCode.E00050001, HttpStatus.BAD_REQUEST);
 		}
 		this.name = name.toUpperCase()+ authority;
-		this.authority = authority;
 	}
 	
 	protected RoleName(AuthorityCode authority) {
 		this.name = authority.name();
-		this.authority = authority;
 	}
 	
 	private boolean lengthBetweenIs(final String text, final int min, final int max) {

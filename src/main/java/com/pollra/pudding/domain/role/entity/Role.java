@@ -1,7 +1,6 @@
 package com.pollra.pudding.domain.role.entity;
 
 import com.pollra.pudding.domain.acl.entity.Acl;
-import com.pollra.pudding.domain.acl.enumerated.AuthorityCode;
 import lombok.*;
 
 import javax.persistence.*;
@@ -12,6 +11,7 @@ import java.util.List;
 @Getter
 @Setter(AccessLevel.PROTECTED)
 @NoArgsConstructor(access=AccessLevel.PROTECTED)
+@AllArgsConstructor(access=AccessLevel.PROTECTED)
 @Table(name = "ROLE")
 public class Role {
     @Id @GeneratedValue
@@ -23,8 +23,4 @@ public class Role {
 	
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="role")
 	private final List<Acl> acls = new ArrayList<>();
-    
-    public Role(RoleName roleName) {
-    	this.roleName = roleName;
-	}
 }
