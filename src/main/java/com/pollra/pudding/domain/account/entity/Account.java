@@ -2,6 +2,7 @@ package com.pollra.pudding.domain.account.entity;
 
 import com.pollra.pudding.common.base.exceptions.IllegalArgumentException;
 import com.pollra.pudding.common.engine.exception.ExceptionCode;
+import com.pollra.pudding.domain.account.service.command.AccountCommand;
 import com.pollra.pudding.domain.role.entity.Role;
 import com.pollra.pudding.common.base.annotation.Description;
 import com.pollra.pudding.common.engine.encrypt.sha.converter.OneWayEncryptionConverter;
@@ -35,6 +36,10 @@ public class Account {
     @Column(nullable=false)
     @Convert(converter=OneWayEncryptionConverter.class)
     private String password;
+    
+    public Account(AccountCommand.Request.Create command, Role role) {
+    	this(command.getIdentity(), command.getNickname(), command.getPassword(), command.getPasswordCheck(), role);
+	}
  
 	protected Account(final String identity, final String nickname, final String password, final String passwordCheck, final Role role) {
 		if(betweenIs(identity, 4, 20)) {

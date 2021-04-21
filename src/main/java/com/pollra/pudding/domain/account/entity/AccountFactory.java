@@ -15,15 +15,5 @@ import org.mapstruct.factory.Mappers;
 public interface AccountFactory {
 	AccountFactory accountFactory = Mappers.getMapper(AccountFactory.class);
 	
-	// TODO: 빼자
-	default Account createAccount(AccountCommand.Request.Create command, Role role){
-		return new Account(command.getIdentity(),
-				command.getNickname(),
-				command.getPassword(),
-				command.getPasswordCheck(),
-				role
-		);
-	}
-	
 	AccountCommand.Response.Create toResponseCreate(Account account);
 }

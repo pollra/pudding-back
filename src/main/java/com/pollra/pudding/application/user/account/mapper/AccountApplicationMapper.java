@@ -15,7 +15,7 @@ import com.pollra.pudding.application.user.account.form.AccountForm.*;
  **********************************************************************************************************************/
 @Mapper(unmappedTargetPolicy=ReportingPolicy.IGNORE)
 public interface AccountApplicationMapper {
-	AccountApplicationMapper mapper =Mappers.getMapper(AccountApplicationMapper.class);
+	AccountApplicationMapper mapper = Mappers.getMapper(AccountApplicationMapper.class);
 	
 	Response.FineOne toFindOne(AccountCommand.Response.Create command);
 	

@@ -21,7 +21,7 @@ public class AccountService {
 	private final AccountRepository accountRepository;
 	
 	public Response.Create createAccount(Request.Create command, Role role){
-		Account normalAccount = accountFactory.createAccount(command, role);
+		Account normalAccount = new Account(command, role);
 		return accountFactory.toResponseCreate(accountRepository.save(normalAccount));
 	}
 }
