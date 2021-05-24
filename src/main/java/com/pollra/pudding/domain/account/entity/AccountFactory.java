@@ -16,4 +16,11 @@ public interface AccountFactory {
 	AccountFactory accountFactory = Mappers.getMapper(AccountFactory.class);
 	
 	AccountCommand.Response.Create toResponseCreate(Account account);
+
+	default Account newAccount(AccountCommand.Request.Create create, Role role) {
+		return new Account(new AccountIdentity(create.getIdentity())
+						  ,new AccountNickname(create.getNickname())
+						  ,new AccountPassword(create.getPassword(), create.getPasswordCheck())
+						  ,role);
+	}
 }

@@ -1,6 +1,5 @@
 package com.pollra.pudding.domain.account.entity;
 
-import com.pollra.pudding.common.base.exceptions.IllegalArgumentException;
 import com.pollra.pudding.common.engine.exception.ExceptionCode;
 import com.pollra.pudding.domain.account.service.command.AccountCommand;
 import com.pollra.pudding.domain.role.entity.Role;
@@ -27,43 +26,25 @@ public class Account {
     private Role role;
 
     @Description("아이디(Guest:IP, User:Email)")
-    @Column(nullable=false, unique=true)
-    private String identity;
+	@Embedded
+    private AccountIdentity identity;
 
-    @Column(nullable=false, unique=true)
-    private String nickname;
+	@Embedded
+    private AccountNickname nickname;
 
-    @Column(nullable=false)
-    @Convert(converter=OneWayEncryptionConverter.class)
-    private String password;
-    
-    public Account(AccountCommand.Request.Create command, Role role) {
-    	this(command.getIdentity(), command.getNickname(), command.getPassword(), command.getPasswordCheck(), role);
-	}
+    @Embedded
+    private AccountPassword password;
  
-	protected Account(final String identity, final String nickname, final String password, final String passwordCheck, final Role role) {
-		if(betweenIs(identity, 4, 20)) {
-			throw new IllegalArgumentException(ExceptionCode.E00040001, HttpStatus.BAD_REQUEST);
-		}
-		if(betweenIs(nickname, 2, 12)) {
-			throw new IllegalArgumentException(ExceptionCode.E00040002, HttpStatus.BAD_REQUEST);
-		}
-		if(betweenIs(password, 8, 30)) {
-			throw new IllegalArgumentException(ExceptionCode.E00040003, HttpStatus.BAD_REQUEST); // 개선 (세부사항이 도메인에 침투함)
-		}
+	protected Account(final AccountIdentity identity
+			         ,final AccountNickname nickname
+					 ,final AccountPassword password
+					 ,final Role            role) {
 		if(Objects.isNull(role)) {
-			throw new IllegalArgumentException(ExceptionCode.E00040004, HttpStatus.BAD_REQUEST); // 사람이 읽을 수 있게 만드는게
-		}
-		if( ! password.equals(passwordCheck)) {
-			throw new IllegalArgumentException(ExceptionCode.E00040005, HttpStatus.BAD_REQUEST);
+			throw new IllegalStateException("권한은 null 일 수 없습니다.");
 		}
 		this.identity = identity;
 		this.nickname = nickname;
 		this.password = password;
 		this.role 	  = role;
-	}
-	
-	private boolean betweenIs(String target, int min, int max) {
-		return target.length() < min || target.length() > max;
 	}
 }

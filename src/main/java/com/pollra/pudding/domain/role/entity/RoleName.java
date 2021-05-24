@@ -1,6 +1,5 @@
 package com.pollra.pudding.domain.role.entity;
 
-import com.pollra.pudding.common.base.exceptions.IllegalArgumentException;
 import com.pollra.pudding.common.engine.exception.ExceptionCode;
 import com.pollra.pudding.domain.acl.enumerated.AuthorityCode;
 import lombok.AccessLevel;
@@ -28,7 +27,7 @@ public class RoleName {
 		if(StringUtils.isNotBlank(name) && lengthBetweenIs(name, 2, 20) ) {
 			throw new IllegalArgumentException(ExceptionCode.E00050001, HttpStatus.BAD_REQUEST);
 		}
-		this.name = name.toUpperCase()+ authority;
+		this.name = name.toUpperCase()+"_"+authority;
 	}
 	
 	protected RoleName(AuthorityCode authority) {
@@ -36,6 +35,6 @@ public class RoleName {
 	}
 	
 	private boolean lengthBetweenIs(final String text, final int min, final int max) {
-		return text.length() < min || text.length() > max;
+		return text.length() <= min || text.length() > max;
 	}
 }
