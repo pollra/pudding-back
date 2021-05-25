@@ -11,16 +11,19 @@ import org.mapstruct.factory.Mappers;
  * @author      pollra
  * @description AccountFactory
  **********************************************************************************************************************/
-@Mapper(unmappedTargetPolicy=ReportingPolicy.IGNORE)
-public interface AccountFactory {
-	AccountFactory accountFactory = Mappers.getMapper(AccountFactory.class);
-	
-	AccountCommand.Response.Create toResponseCreate(Account account);
-
-	default Account newAccount(AccountCommand.Request.Create create, Role role) {
+public class AccountFactory {
+	public static Account create(AccountCommand.Request.Create create, Role role) {
 		return new Account(new AccountIdentity(create.getIdentity())
 						  ,new AccountNickname(create.getNickname())
 						  ,new AccountPassword(create.getPassword(), create.getPasswordCheck())
 						  ,role);
+	}
+
+	public static AccountCommand.Response.Create toCreate(Account entity) {
+		return AccountCommand.Response.Create.builder()
+				.id(entity.getId())
+				.identity(entity.getIdentity().getIdentity())
+				.nickname(entity.getNickname().getNickname())
+				.build();
 	}
 }

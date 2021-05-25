@@ -20,8 +20,6 @@ public class Acl {
     @Enumerated(EnumType.STRING)
     private ResourceCode resource;
     
-    private Long resourceId;
-    
     @Enumerated(EnumType.STRING)
     private ActionCode action;
     

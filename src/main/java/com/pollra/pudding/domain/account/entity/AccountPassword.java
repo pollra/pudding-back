@@ -28,4 +28,8 @@ public class AccountPassword {
         }
         this.password = password;
     }
+
+    protected static AccountPassword create(final String password, final String passwordCheck) {
+        return new AccountPassword(password, passwordCheck);
+    }
 }

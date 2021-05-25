@@ -23,4 +23,8 @@ public class AccountIdentity {
         }
         this.identity = identity;
     }
+
+    protected static AccountIdentity create(final String identity) {
+        return new AccountIdentity(identity);
+    }
 }

@@ -17,10 +17,14 @@ public class AccountNickname {
     @Column(nullable=false, unique=true)
     private String nickname;
 
-    protected AccountNickname(String nickname) {
+    protected AccountNickname(final String nickname) {
         if(betweenIs(nickname, 2, 12)) {
             throw new IllegalArgumentException("닉네임을 다시 확인 해 주세요.");
         }
         this.nickname = nickname;
+    }
+
+    protected static AccountNickname create(final String nickname) {
+        return new AccountNickname(nickname);
     }
 }

@@ -14,5 +14,5 @@ public class RoleNameFactory {
 	
 	public static RoleName createNewGuestRoleName(String name){
 		return new RoleName(name, GUEST);
-	} // TODO: 팩토리가 너무 쉽게 쓰이고있다 기준이 필요함
+	}
 }

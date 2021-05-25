@@ -1,13 +1,13 @@
 package com.pollra.pudding.domain.account.service;
 
 import com.pollra.pudding.domain.account.entity.Account;
+import com.pollra.pudding.domain.account.entity.AccountFactory;
 import com.pollra.pudding.domain.account.repository.AccountRepository;
-import com.pollra.pudding.domain.account.service.command.AccountCommand.*;
+import com.pollra.pudding.domain.account.service.command.AccountCommand.Request;
+import com.pollra.pudding.domain.account.service.command.AccountCommand.Response;
 import com.pollra.pudding.domain.role.entity.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import static com.pollra.pudding.domain.account.entity.AccountFactory.accountFactory;
 
 /**
  * @since       2021.04.15
@@ -21,7 +21,7 @@ public class AccountService {
 	private final AccountRepository accountRepository;
 	
 	public Response.Create createAccount(Request.Create command, Role role) {
-		Account normalAccount = new Account(command, role);
-		return accountFactory.toResponseCreate(accountRepository.save(normalAccount));
+		Account normalAccount = AccountFactory.create(command, role);
+		return AccountFactory.toCreate(normalAccount);
 	}
 }

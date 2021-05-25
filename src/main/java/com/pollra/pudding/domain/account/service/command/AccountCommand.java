@@ -11,7 +11,7 @@ public class AccountCommand {
 	
 	public static class Request {
 		@Getter
-		@Setter
+		@Builder
 		@NoArgsConstructor
 		@AllArgsConstructor
 		public static class Create {
@@ -24,7 +24,7 @@ public class AccountCommand {
 	
 	public static class Response {
 		@Getter
-		@Setter
+		@Builder
 		@NoArgsConstructor
 		@AllArgsConstructor
 		public static class Create {

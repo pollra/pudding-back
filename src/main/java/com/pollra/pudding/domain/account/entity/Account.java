@@ -1,12 +1,10 @@
 package com.pollra.pudding.domain.account.entity;
 
-import com.pollra.pudding.common.engine.exception.ExceptionCode;
 import com.pollra.pudding.domain.account.service.command.AccountCommand;
 import com.pollra.pudding.domain.role.entity.Role;
 import com.pollra.pudding.common.base.annotation.Description;
 import com.pollra.pudding.common.engine.encrypt.sha.converter.OneWayEncryptionConverter;
 import lombok.*;
-import org.springframework.http.HttpStatus;
 
 import javax.persistence.*;
 import java.util.Objects;

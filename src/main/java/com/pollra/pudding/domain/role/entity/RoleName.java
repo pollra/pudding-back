@@ -25,7 +25,7 @@ public class RoleName {
 	
 	protected RoleName(final String name, AuthorityCode authority) {
 		if(StringUtils.isNotBlank(name) && lengthBetweenIs(name, 2, 20) ) {
-			throw new IllegalArgumentException(ExceptionCode.E00050001, HttpStatus.BAD_REQUEST);
+			throw new IllegalArgumentException("권한 이름을 다시 확인해주세요.");
 		}
 		this.name = name.toUpperCase()+"_"+authority;
 	}

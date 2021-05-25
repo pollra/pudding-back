@@ -1,5 +1,8 @@
 package com.pollra.pudding.domain.account.entity;
 
+import com.pollra.pudding.domain.account.service.command.AccountCommand;
+import com.pollra.pudding.domain.role.repository.RoleRepository;
+import com.pollra.pudding.domain.role.service.RoleService;
 import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -8,12 +11,18 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class AccountTest {
 
+	private RoleService roleService;
+
+	@BeforeEach
+	public void setting(){
+	}
+
 	@Test
 	@Order(1)
-	@DisplayName("아이디가 4자 미만인 경우 예외발생")
+	@DisplayName("아이디가 2자 미만인 경우 예외발생")
 	public void idIsLessThan4Characters(){
 		assertThrows(IllegalArgumentException.class
-				, () -> AccountFactory.createNormalAccount("1", "0123456789", "0123456789", "0123456789"));
+				, () -> new Account());
 	}
 
 	@Test
