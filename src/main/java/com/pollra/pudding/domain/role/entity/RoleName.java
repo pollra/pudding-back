@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 
 import javax.persistence.*;
 
+import static com.pollra.pudding.common.engine.util.StringScopeUtil.betweenIs;
+
 /**
  * @since       2021.04.14
  * @author      pollra
@@ -23,8 +25,8 @@ public class RoleName {
 	@Column(unique=true)
 	private String name;
 	
-	protected RoleName(final String name, AuthorityCode authority) {
-		if(StringUtils.isNotBlank(name) && lengthBetweenIs(name, 2, 20) ) {
+	private RoleName(final String name, AuthorityCode authority) {
+		if(StringUtils.isNotBlank(name) && betweenIs(name, 2, 20) ) {
 			throw new IllegalArgumentException("권한 이름을 다시 확인해주세요.");
 		}
 		this.name = name.toUpperCase()+"_"+authority;
@@ -33,8 +35,8 @@ public class RoleName {
 	protected RoleName(AuthorityCode authority) {
 		this.name = authority.name();
 	}
-	
-	private boolean lengthBetweenIs(final String text, final int min, final int max) {
-		return text.length() <= min || text.length() > max;
+
+	protected static RoleName createCustomRole(String name, AuthorityCode code) {
+		return new RoleName(name, code);
 	}
 }

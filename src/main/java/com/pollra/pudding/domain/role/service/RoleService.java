@@ -1,8 +1,7 @@
 package com.pollra.pudding.domain.role.service;
 
 import com.pollra.pudding.domain.role.entity.Role;
-import com.pollra.pudding.domain.role.entity.RoleName;
-import com.pollra.pudding.domain.role.entity.RoleNameFactory;
+import com.pollra.pudding.domain.role.entity.RoleFactory;
 import com.pollra.pudding.domain.role.repository.RoleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,9 +18,9 @@ public class RoleService {
 	
 	private final RoleRepository roleRepository;
 	
-	@Transactional
-	public Role guestRole() {
-		RoleName guestRoleName = RoleNameFactory.guestRoleName();
-		return roleRepository.findByRoleName(guestRoleName);
+	@Transactional(readOnly = true)
+	public Role getGuestRole() {
+		Role guestRole = RoleFactory.guestRole();
+		return roleRepository.findByRoleName(guestRole);
 	}
 }

@@ -6,12 +6,11 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Getter
-@Setter(AccessLevel.PROTECTED)
-@NoArgsConstructor(access=AccessLevel.PROTECTED)
-@AllArgsConstructor(access=AccessLevel.PROTECTED)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "ROLE")
 public class Role {
     @Id @GeneratedValue
@@ -23,4 +22,11 @@ public class Role {
 	
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="role")
 	private final List<Acl> acls = new ArrayList<>();
+
+	protected Role(final RoleName roleName) {
+	    if(Objects.isNull(roleName)) {
+	        throw new IllegalArgumentException("권한 이름은 null일 수 없습니다.");
+        }
+	    this.roleName = roleName;
+    }
 }
