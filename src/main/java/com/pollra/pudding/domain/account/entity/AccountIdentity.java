@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
-import static com.pollra.pudding.common.engine.util.StringScopeUtil.betweenIs;
+import static com.pollra.pudding.common.engine.util.StringScopeUtil.notBetweenIs;
 
 @Embeddable
 @Getter
@@ -18,7 +18,7 @@ public class AccountIdentity {
     private String identity;
 
     protected AccountIdentity(final String identity) {
-        if(betweenIs(identity, 4, 20)) {
+        if(notBetweenIs(identity, 4, 20)) {
             throw new IllegalArgumentException("아이디를 다시 확인 해 주세요.");
         }
         this.identity = identity;

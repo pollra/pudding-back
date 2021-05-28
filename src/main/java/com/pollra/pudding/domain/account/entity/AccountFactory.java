@@ -19,7 +19,7 @@ public class AccountFactory {
 						  ,role);
 	}
 
-	public static AccountCommand.Response.Create toCreate(Account entity) {
+	public static AccountCommand.Response.Create toCreateCommand(Account entity) {
 		return AccountCommand.Response.Create.builder()
 				.id(entity.getId())
 				.identity(entity.getIdentity().getIdentity())

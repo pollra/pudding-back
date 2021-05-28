@@ -22,6 +22,6 @@ public class AccountService {
 	
 	public Response.Create createAccount(Request.Create command, Role role) {
 		Account normalAccount = AccountFactory.create(command, role);
-		return AccountFactory.toCreate(normalAccount);
+		return AccountFactory.toCreateCommand(normalAccount);
 	}
 }
