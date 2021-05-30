@@ -19,9 +19,11 @@ import org.springframework.stereotype.Service;
 public class AccountService {
 	
 	private final AccountRepository accountRepository;
-	
+
+	// TODO : 얘 없어도 될것같은데?
 	public Response.Create createAccount(Request.Create command, Role role) {
 		Account normalAccount = AccountFactory.create(command, role);
-		return AccountFactory.toCreateCommand(normalAccount);
+		Account save = accountRepository.save(normalAccount);
+		return AccountFactory.toCreateCommand(save);
 	}
 }
