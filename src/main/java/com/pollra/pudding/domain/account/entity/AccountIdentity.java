@@ -10,10 +10,10 @@ import javax.persistence.Embeddable;
 import static com.pollra.pudding.common.engine.util.StringScopeUtil.notBetweenIs;
 
 @Embeddable
-@Getter
 @NoArgsConstructor(access=AccessLevel.PROTECTED)
 public class AccountIdentity {
 
+    @Getter
     @Column(nullable=false, unique=true, length = 20)
     private String identity;
 

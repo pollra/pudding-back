@@ -8,14 +8,13 @@ import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Embeddable;
 
-import static com.pollra.pudding.common.engine.util.StringScopeUtil.betweenIs;
 import static com.pollra.pudding.common.engine.util.StringScopeUtil.notBetweenIs;
 
 @Embeddable
-@Getter
 @NoArgsConstructor
 public class AccountPassword {
 
+    @Getter
     @Column(nullable=false)
     @Convert(converter= OneWayEncryptionConverter.class)
     private String password;
