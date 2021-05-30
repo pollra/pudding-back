@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "ROLE")
 public class Role {
@@ -19,7 +18,8 @@ public class Role {
 
 	@Embedded
     private RoleName roleName;
-	
+
+	@Getter
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="role")
 	private final List<Acl> acls = new ArrayList<>();
 
@@ -29,4 +29,8 @@ public class Role {
         }
 	    this.roleName = roleName;
     }
+
+    public String getRoleName() {
+		return roleName.getName();
+	}
 }
