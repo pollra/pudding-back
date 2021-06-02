@@ -1,4 +1,4 @@
-package com.pollra.pudding.domain.acl.enumerated;
+package com.pollra.pudding.domain.acl.entity.enumerated;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -8,4 +8,5 @@ import static org.junit.jupiter.api.Assertions.*;
 @DisplayName("Role 엔티티 테스트")
 class RoleTest {
 
+
 }

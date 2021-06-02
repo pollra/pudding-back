@@ -1,6 +1,5 @@
 package com.pollra.pudding.domain.role.entity;
 
-import com.pollra.pudding.domain.acl.enumerated.AuthorityCode;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

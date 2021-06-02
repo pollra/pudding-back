@@ -22,7 +22,7 @@ public class AccountApplicationService {
 	
 	@Transactional
 	public AccountCommand.Response.Create create(AccountCommand.Request.Create account) {
-		Role role = roleService.getGuestRole();
+		Role role = roleService.getGuestAuthority();
 		return accountService.createAccount(account, role);
 	}
 }

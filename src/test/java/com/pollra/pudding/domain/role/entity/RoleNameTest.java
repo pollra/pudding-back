@@ -1,6 +1,5 @@
 package com.pollra.pudding.domain.role.entity;
 
-import com.pollra.pudding.domain.acl.enumerated.AuthorityCode;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;

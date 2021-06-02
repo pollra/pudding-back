@@ -51,7 +51,7 @@ public class AccountServiceTest {
         Role role = RoleFactory.guestRole();
 
         when(roleRepository.findByRoleName(any(Role.class))).thenReturn(role);
-        Role guestRole = roleService.getGuestRole();
+        Role guestRole = roleService.getGuestAuthority();
 
         Account accountServiceResult = AccountFactory.create(build, guestRole);
         when(accountRepository.save(any(Account.class))).thenReturn(accountServiceResult);

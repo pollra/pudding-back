@@ -1,6 +1,7 @@
-package com.pollra.pudding.domain.acl.enumerated;
+package com.pollra.pudding.domain.role.entity;
 
 import com.pollra.pudding.common.base.annotation.Description;
+import com.pollra.pudding.domain.acl.entity.AclStrategy;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -12,10 +13,10 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum AuthorityCode {
-    GUEST	("손님"),
+    GUEST	("손님"  ),
 	VISITOR	("방문자"),
-	MEMBER	("회원"),
-	MASTER	("주인"),
+	MEMBER	("회원"  ),
+	MASTER	("주인"  ),
 	ADMIN	("관리자");
     
     private String description;
