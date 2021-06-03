@@ -26,22 +26,19 @@ public class Acl {
     @JoinColumn(name = "ROLE_ID")
     private Role role;
 
-    @Enumerated(EnumType.STRING)
-    private ResourceCode resource;
-
-    private Long resourceId;
+    @Embedded
+    private Resource resource;
     
     @Enumerated(EnumType.STRING)
     private ActionCode action;
     
     private LocalDateTime expiration;
 
-    protected Acl(final Role role, final ResourceCode resourceCode, final ActionCode actionCode, final LocalDateTime expiration) {
+    protected Acl(final Role role, final Long resourceId, final ResourceCode resourceCode, final ActionCode actionCode, final LocalDateTime expiration) {
         if( Objects.isNull(role) ) throw new IllegalArgumentException("Role 은 Null 일 수 없습니다.");
-        if( Objects.isNull(resourceCode) ) throw new IllegalArgumentException("Resource 는 Null 일 수 없습니다.");
         if( Objects.isNull(actionCode) ) throw new IllegalArgumentException("Action 은 Null 일 수 없습니다.");
         this.role = role;
-        this.resource = resourceCode;
+        this.resource = new Resource(resourceId, resourceCode);
         this.action = actionCode;
         this.expiration = expiration;
     }

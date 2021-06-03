@@ -14,8 +14,10 @@ import java.time.LocalDateTime;
 public class AclBuilder {
 
     private Role role;
+    private Long resourceId;
     private ResourceCode resourceCode;
     private ActionCode actionCode;
+    private LocalDateTime expiration;
 
     private final AclActionBuilder aclActionBuilder = new AclActionBuilder();
 
@@ -23,58 +25,72 @@ public class AclBuilder {
         this.role = role;
     }
 
-    public AclActionBuilder page() {
+    public AclActionBuilder page(Long resourceId) {
+        this.resourceId = resourceId;
         resourceCode = ResourceCode.PAGE;
         return aclActionBuilder;
     }
 
-    public AclActionBuilder post() {
+    public AclActionBuilder post(Long resourceId) {
+        this.resourceId = resourceId;
         resourceCode = ResourceCode.POST;
         return aclActionBuilder;
     }
 
-    public AclActionBuilder tag() {
+    public AclActionBuilder tag(Long resourceId) {
+        this.resourceId = resourceId;
         resourceCode = ResourceCode.TAG;
         return aclActionBuilder;
     }
 
-    public AclActionBuilder category() {
+    public AclActionBuilder category(Long resourceId) {
+        this.resourceId = resourceId;
         resourceCode = ResourceCode.CATEGORY;
         return aclActionBuilder;
     }
 
-    public AclActionBuilder comment() {
+    public AclActionBuilder comment(Long resourceId) {
+        this.resourceId = resourceId;
         resourceCode = ResourceCode.COMMENT;
         return aclActionBuilder;
     }
 
     public class AclActionBuilder {
-        private final AclProvider aclProvider = new AclProvider();
+        private final AclExpirationBuilder aclExpirationBuilder = new AclExpirationBuilder();
 
-        public AclProvider read() {
+        public AclExpirationBuilder read() {
             actionCode = ActionCode.READ;
-            return aclProvider;
+            return aclExpirationBuilder;
         }
 
-        public AclProvider write() {
+        public AclExpirationBuilder write() {
             actionCode = ActionCode.WRITE;
-            return aclProvider;
+            return aclExpirationBuilder;
         }
 
-        public AclProvider modify() {
+        public AclExpirationBuilder modify() {
             actionCode = ActionCode.MODIFY;
-            return aclProvider;
+            return aclExpirationBuilder;
         }
 
-        public AclProvider delete() {
+        public AclExpirationBuilder delete() {
             actionCode = ActionCode.DELETE;
-            return aclProvider;
+            return aclExpirationBuilder;
         }
 
-        public class AclProvider {
+        public class AclExpirationBuilder {
 
-            public Acl build() {
-                return new Acl(role, resourceCode, actionCode, LocalDateTime.now().plusHours(1));
+            private final AclProvider aclProvider = new AclProvider();
+
+            public AclProvider expirationIs(LocalDateTime expirationDateTime) {
+                expiration = expirationDateTime;
+                return aclProvider;
+            }
+
+            public class AclProvider {
+                public Acl build() {
+                    return new Acl(role, resourceId, resourceCode, actionCode, LocalDateTime.now().plusHours(1));
+                }
             }
         }
     }

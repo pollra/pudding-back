@@ -6,6 +6,7 @@ import com.pollra.pudding.domain.role.entity.Role;
 import lombok.AccessLevel;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
@@ -24,9 +25,10 @@ public class AclFactory {
 
     private static List<Acl> createVisitor(Role role) {
         AclBuilder aclBuilder = new AclBuilder(role);
+        LocalDateTime expiration = LocalDateTime.now().plusHours(12);
         return Arrays.asList(
-                aclBuilder.page().read().build(),
-                aclBuilder.post().read().build(),
+                aclBuilder.page(1L).read().expirationIs(expiration).build(),
+                aclBuilder.post(0L).read().build(),
                 aclBuilder.tag().read().build(),
                 aclBuilder.category().read().build(),
                 aclBuilder.comment().write().build(),
