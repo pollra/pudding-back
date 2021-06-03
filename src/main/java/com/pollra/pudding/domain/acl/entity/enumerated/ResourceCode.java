@@ -12,8 +12,8 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum ResourceCode {
 	PAGE	,
-	POST	,
-	TAG		,
 	CATEGORY,
+	TAG		,
+	POST	,
 	COMMENT	;
 }

@@ -16,7 +16,6 @@ class AclBuilderTest {
     @Test
     public void test(){
         AclBuilder aclBuilder = new AclBuilder(RoleFactory.guestRole());
-        Arrays.asList(
-        )
+
     }
 }

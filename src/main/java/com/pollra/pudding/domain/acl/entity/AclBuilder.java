@@ -89,7 +89,7 @@ public class AclBuilder {
 
             public class AclProvider {
                 public Acl build() {
-                    return new Acl(role, resourceId, resourceCode, actionCode, LocalDateTime.now().plusHours(1));
+                    return new Acl(role, resourceId, resourceCode, actionCode, expiration);
                 }
             }
         }
