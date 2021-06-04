@@ -24,6 +24,11 @@ public class Constant {
         public final static java.lang.Integer THIRTY  = 30;
     }
 
+    public static class Long {
+        public final static java.lang.Long ZERO = 0L;
+        public final static java.lang.Long ONE  = 1L;
+    }
+
     public static class Message {
         public static final java.lang.String ERROR = "E";
     }

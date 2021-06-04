@@ -4,9 +4,7 @@ import com.pollra.pudding.domain.acl.entity.enumerated.ActionCode;
 import com.pollra.pudding.domain.acl.entity.enumerated.ResourceCode;
 import com.pollra.pudding.domain.role.entity.Role;
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -14,7 +12,6 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "ACL")
-@ToString
 @NoArgsConstructor(access=AccessLevel.PROTECTED)
 public class Acl {
     @Id @GeneratedValue
@@ -22,7 +19,6 @@ public class Acl {
     private Long id;
 
     @ManyToOne
-    @ToString.Exclude
     @JoinColumn(name = "ROLE_ID")
     private Role role;
 

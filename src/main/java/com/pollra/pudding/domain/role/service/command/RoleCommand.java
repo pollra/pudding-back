@@ -14,6 +14,8 @@ public class RoleCommand {
 		@Data
 		public static class Create {
 			private String name;
+			private AuthorityCode authorityCode;
+			private Long resourceId;
 		}
 	}
 	

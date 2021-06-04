@@ -1,10 +1,11 @@
 package com.pollra.pudding.domain.account.entity;
 
-import com.pollra.pudding.domain.account.service.command.AccountCommand;
-import com.pollra.pudding.domain.role.entity.Role;
 import com.pollra.pudding.common.base.annotation.Description;
 import com.pollra.pudding.common.engine.encrypt.sha.converter.OneWayEncryptionConverter;
-import lombok.*;
+import com.pollra.pudding.domain.role.entity.Role;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -33,10 +34,7 @@ public class Account {
     @Embedded
     private AccountPassword password;
  
-	protected Account(final AccountIdentity identity
-			         ,final AccountNickname nickname
-					 ,final AccountPassword password
-					 ,final Role            role) {
+	protected Account(final AccountIdentity identity, final AccountNickname nickname, final AccountPassword password, final Role            role) {
 		if(Objects.isNull(role)) {
 			throw new IllegalStateException("권한은 null 일 수 없습니다.");
 		}
