@@ -25,7 +25,7 @@ public class Role {
     private RoleName roleName;
 
 	@Getter
-	@OneToMany(fetch=FetchType.LAZY, mappedBy="role", cascade = CascadeType.ALL)
+	@OneToMany(fetch=FetchType.LAZY, mappedBy="role")
 	private final List<Acl> acls = new ArrayList<>();
 
 	protected Role(final RoleName roleName) {
