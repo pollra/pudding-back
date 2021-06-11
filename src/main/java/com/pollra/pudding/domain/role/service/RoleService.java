@@ -18,9 +18,9 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class RoleService {
 
-	// TODO: 2021/06/04 의존성 주입이 사용되는게 맞는건가? 외부에서 주입받으면 좋지않을까?
+	// TODO: 2021/06/04 의존성 주입이 사용되는게 맞는건가? 외부(Application Layer)에서 주입받으면 좋지않을까?
 	private final RoleRepository roleRepository;
-	
+
 	@Transactional(readOnly = true)
 	public Role getGuestAuthority() {
 		Role guestRole = RoleFactory.guestRole();
