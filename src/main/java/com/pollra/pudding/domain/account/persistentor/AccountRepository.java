@@ -1,4 +1,4 @@
-package com.pollra.pudding.domain.account.repository;
+package com.pollra.pudding.domain.account.persistentor;
 
 import com.pollra.pudding.domain.account.entity.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
