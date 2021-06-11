@@ -18,7 +18,7 @@ public class RoleNameTest {
         @DisplayName("입력된 값이 2자 이면 정상 동작")
         public void more() {
             assertDoesNotThrow(
-                    () -> RoleName.createCustomRole("01", AuthorityCode.GUEST)
+                    () -> new RoleName("01", AuthorityCode.GUEST)
             );
         }
 
@@ -26,7 +26,7 @@ public class RoleNameTest {
         @DisplayName("입력된 값이 20자 이면 정상동작")
         public void runner() {
             assertDoesNotThrow(
-                    ()-> RoleName.createCustomRole("01234567890123456789", AuthorityCode.GUEST)
+                    ()-> new RoleName("01234567890123456789", AuthorityCode.GUEST)
             );
         }
     }
@@ -39,14 +39,14 @@ public class RoleNameTest {
         @DisplayName("입력된 값이 2 미만이면 예외 발생")
         public void lessThen() {
             assertThrows(IllegalArgumentException.class,
-                    () -> RoleName.createCustomRole("0", AuthorityCode.GUEST));
+                    () -> new RoleName("0", AuthorityCode.GUEST));
         }
 
         @Test
         @DisplayName("입력된 값이 20을 초과하면 예외 발생")
         public void moreThen() {
             assertThrows(IllegalArgumentException.class,
-                    () -> RoleName.createCustomRole("012345678901234567890", AuthorityCode.GUEST));
+                    () -> new RoleName("012345678901234567890", AuthorityCode.GUEST));
         }
     }
 }

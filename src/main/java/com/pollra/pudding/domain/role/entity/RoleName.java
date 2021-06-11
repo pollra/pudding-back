@@ -27,15 +27,11 @@ public class RoleName {
 	private AuthorityCode authority;
 	
 	protected RoleName(final String name, AuthorityCode authority) {
-		if(Objects.isNull(name) && notBetweenIs(name, 2, 20) ) {
-			throw new IllegalArgumentException("권한 이름을 다시 확인해주세요.");
+		if(Objects.isNull(name) || notBetweenIs(name, 2, 20) ) {
+			throw new IllegalArgumentException("닉네임은 2자 이상 20자 이하여야 합니다.");
 		}
 		this.name = name;
 		this.authority = authority;
-	}
-
-	protected static RoleName createCustomRole(String name, AuthorityCode code) {
-		return new RoleName(name, code);
 	}
 
 	public String toString() {
