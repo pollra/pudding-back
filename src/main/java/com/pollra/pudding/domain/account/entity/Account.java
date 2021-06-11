@@ -8,7 +8,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Objects;
 
 @Entity
 @Getter
@@ -16,6 +15,7 @@ import java.util.Objects;
 @NoArgsConstructor(access=AccessLevel.PROTECTED)
 @Table(name="ACCOUNT")
 public class Account {
+
     @Id @GeneratedValue
     @Column(name="ACCOUNT_ID")
     private Long id;
@@ -34,13 +34,11 @@ public class Account {
     @Embedded
     private AccountPassword password;
  
-	protected Account(final AccountIdentity identity, final AccountNickname nickname, final AccountPassword password, final Role            role) {
-		if(Objects.isNull(role)) {
-			throw new IllegalStateException("권한은 null 일 수 없습니다.");
-		}
+	protected Account(final AccountIdentity identity, final AccountNickname nickname, final AccountPassword password, final Role role) {
 		this.identity = identity;
 		this.nickname = nickname;
 		this.password = password;
 		this.role 	  = role;
+		AccountSpecification.isValid(this);
 	}
 }

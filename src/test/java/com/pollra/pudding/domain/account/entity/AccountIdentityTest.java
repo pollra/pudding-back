@@ -44,4 +44,16 @@ public class AccountIdentityTest {
                     () -> new AccountIdentity("01234567890123456789"));
         }
     }
+
+    @Nested
+    @DisplayName("인수로 아무 데이터도 넘기지 않을 때")
+    class NoArgument {
+
+        @Test
+        @DisplayName("정상 동작")
+        public void ok() {
+            assertDoesNotThrow(() -> new AccountIdentity());
+        }
+    }
+
 }

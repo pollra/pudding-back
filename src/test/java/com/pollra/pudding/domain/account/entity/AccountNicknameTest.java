@@ -46,4 +46,15 @@ class AccountNicknameTest {
                     () -> new AccountNickname("012345678901"));
         }
     }
+
+    @Nested
+    @DisplayName("No Argument Test")
+    class NoArgument {
+
+        @Test
+        @DisplayName("인자가 없는 생성자 호출 시 정상 작동")
+        public void noArgument() {
+            assertNotNull(new AccountNickname(), "객체 생성을 하지 못했습니다.");
+        }
+    }
 }

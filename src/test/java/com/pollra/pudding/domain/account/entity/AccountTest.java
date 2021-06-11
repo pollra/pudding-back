@@ -3,13 +3,9 @@ package com.pollra.pudding.domain.account.entity;
 import com.pollra.pudding.domain.account.service.command.AccountCommand;
 import com.pollra.pudding.domain.role.entity.Role;
 import com.pollra.pudding.domain.role.entity.RoleFactory;
-import com.pollra.pudding.domain.role.repository.RoleRepository;
-import com.pollra.pudding.domain.role.service.RoleService;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 
 import static org.junit.jupiter.api.Assertions.*;
 
