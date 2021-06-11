@@ -5,7 +5,7 @@ property:
   api:
     end-point: /api
   jwt:
-    key: ENC(OSpYSdJtNoXeebM36n2vI11cBS9ZKO8cG56ndGc0YvolyW6ECf11MuwETS4nbZ2R5emSBn6gbI0aItGCiTfusw==)
+    key: ${jwt-key}
 # default
 logging:
   config: classpath:config/logback/logback.xml
@@ -22,10 +22,6 @@ spring:
         always-use-message-format: false
         encoding: UTF-8
         basename: config/message/messages
-    encrypt:
-        salt: ENC(qE50u7USWEtFeYaryPA7eA2L6vF/VKdcV3lxu1mkiz3WlrZ33tLZjEYZSTT7LOok)
-        hashing: ENC(haiJZC4qfPHzPxWZYHbfjNyPkhEYJxLiTlxFdWRsvWMFnBwlN3IC99ycTTCXOTWC)
-        algorithm: ENC(t++E92z0njmN4bbMIVdOSCrIREKNGfEy0NEuTDsmmA/g+5F933jkeyL59gk4vaeZ)
 
 # default(local)
 ---
@@ -40,7 +36,7 @@ spring:
       path: /h2
   datasource:
     driver-class-name: org.h2.Driver
-    url: ENC(CasVWKjJ/V5YPQxxhbEnZ14ah5PW7Mmy8sa8L+p5pFbt/DkgQB42Z9fxwp383HH1TXyLEEpJfh2wj6r51GK3BwFSCM3/mZ5Q8XJmSWB/znY=)
+    url: jdbc:h2:mem://localhost~/pudding
     username: sa
     password:
 # dev
