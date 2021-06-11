@@ -15,9 +15,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author pollra
+ * @since       2021.02.05
+ * @author      pollra
  * @description JwtEncryptionAlgorithm
- * @since 2021.02.05
  **********************************************************************************************************************/
 @Component
 @RequiredArgsConstructor
