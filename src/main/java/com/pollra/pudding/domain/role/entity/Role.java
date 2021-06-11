@@ -36,7 +36,7 @@ public class Role {
     }
 
 	public String getRoleAuthority() {
-		return roleName.getAuthority();
+		return roleName.authorityName();
 	}
 
 	public void aclAddAll(List<Acl> accessControlList) {
