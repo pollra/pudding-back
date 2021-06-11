@@ -1,7 +1,6 @@
-package com.pollra.pudding.domain.role.repository;
+package com.pollra.pudding.domain.role.persistentor;
 
 import com.pollra.pudding.domain.role.entity.Role;
-import com.pollra.pudding.domain.role.entity.RoleName;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

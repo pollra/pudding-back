@@ -3,7 +3,7 @@ package com.pollra.pudding.domain.role.service;
 import com.pollra.pudding.domain.acl.entity.AclFactory;
 import com.pollra.pudding.domain.role.entity.Role;
 import com.pollra.pudding.domain.role.entity.RoleFactory;
-import com.pollra.pudding.domain.role.repository.RoleRepository;
+import com.pollra.pudding.domain.role.persistentor.RoleRepository;
 import com.pollra.pudding.domain.role.service.command.RoleCommand;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
