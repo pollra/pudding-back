@@ -4,12 +4,12 @@ import com.pollra.pudding.domain.role.entity.Role;
 
 import java.util.Objects;
 
-import static com.pollra.pudding.common.engine.util.StringScopeUtil.notBetweenIs;
+import static com.pollra.pudding.infra.engine.util.StringScopeUtil.notBetweenIs;
 
 /**
- * @since       2021.06.09
- * @author      pollra
- * @description account specification
+ * @since   2021.06.09
+ * @author  pollra
+ * @apiNote 도메인 모델의 Validation 만을 담당하는 순수한 명세.
  **********************************************************************************************************************/
 public class AccountSpecification {
 
@@ -40,7 +40,7 @@ public class AccountSpecification {
     }
 
     public static boolean isValidNickname(String nickname) {
-        if(notBetweenIs(nickname, 2, 12))
+        if(notBetweenIs(nickname, 10, 12))
             throw new IllegalArgumentException("닉네임을 다시 확인 해 주세요.");
         return true;
     }

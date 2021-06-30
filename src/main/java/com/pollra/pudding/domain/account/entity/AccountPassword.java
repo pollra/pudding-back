@@ -1,6 +1,6 @@
 package com.pollra.pudding.domain.account.entity;
 
-import com.pollra.pudding.common.engine.encrypt.sha.converter.OneWayEncryptionConverter;
+import com.pollra.pudding.infra.engine.encrypt.sha.converter.OneWayEncryptionConverter;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -9,8 +9,11 @@ import javax.persistence.Convert;
 import javax.persistence.Embeddable;
 import javax.persistence.Transient;
 
-import static com.pollra.pudding.common.engine.util.StringScopeUtil.notBetweenIs;
-
+/**
+ * @since   2021.06.11
+ * @author  pollra
+ * @apiNote Account 의 Password 를 관리하는 ValueObject
+ **********************************************************************************************************************/
 @Embeddable
 @NoArgsConstructor
 public class AccountPassword {

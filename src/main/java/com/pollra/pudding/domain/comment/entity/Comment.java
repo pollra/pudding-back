@@ -1,6 +1,6 @@
 package com.pollra.pudding.domain.comment.entity;
 
-import com.pollra.pudding.common.base.entity.Sign;
+import com.pollra.pudding.infra.base.entity.Sign;
 import com.pollra.pudding.domain.comment.enumerated.CommentStatus;
 
 import javax.persistence.*;

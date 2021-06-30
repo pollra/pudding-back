@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.pollra.pudding.common.engine.constant.Constant.Long.*;
+import static com.pollra.pudding.infra.engine.constant.Constant.Long.*;
 
 public class AclFactory {
 

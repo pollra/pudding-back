@@ -1,6 +1,6 @@
 package com.pollra.pudding.domain.category.entity;
 
-import com.pollra.pudding.common.base.entity.Sign;
+import com.pollra.pudding.infra.base.entity.Sign;
 import com.pollra.pudding.domain.category.enumerated.CategoryStatus;
 
 import javax.persistence.*;

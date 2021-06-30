@@ -1,7 +1,7 @@
 package com.pollra.pudding.domain.account.entity;
 
-import com.pollra.pudding.common.base.annotation.Description;
-import com.pollra.pudding.common.engine.encrypt.sha.converter.OneWayEncryptionConverter;
+import com.pollra.pudding.infra.base.annotation.Description;
+import com.pollra.pudding.infra.engine.encrypt.sha.converter.OneWayEncryptionConverter;
 import com.pollra.pudding.domain.role.entity.Role;
 import lombok.AccessLevel;
 import lombok.Getter;

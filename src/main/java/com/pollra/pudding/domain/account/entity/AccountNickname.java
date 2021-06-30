@@ -7,8 +7,6 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
-import static com.pollra.pudding.common.engine.util.StringScopeUtil.notBetweenIs;
-
 @Embeddable
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class AccountNickname {

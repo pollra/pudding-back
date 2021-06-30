@@ -1,17 +1,14 @@
 package com.pollra.pudding.domain.role.entity;
 
 import lombok.AccessLevel;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 
-import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import javax.persistence.Transient;
 
 import java.util.Objects;
 
-import static com.pollra.pudding.common.engine.util.StringScopeUtil.notBetweenIs;
+import static com.pollra.pudding.infra.engine.util.StringScopeUtil.notBetweenIs;
 
 /**
  * @since       2021.04.14
