@@ -6,17 +6,20 @@ import com.pollra.pudding.domain.category.entity.Category;
 import com.pollra.pudding.domain.post.enumerated.PostStatus;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "POST")
 public class Post extends Sign {
+
     @Id @GeneratedValue
     @Column(name = "POST_ID")
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "ACL_ID")
-    private Acl acl;
+    @ManyToMany
+    @JoinTable(name="post_acl")
+    private List<Acl> acl = new ArrayList<>();
 
     private String title;
     private Long viewCount;
